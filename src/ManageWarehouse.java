@@ -226,7 +226,7 @@ public class ManageWarehouse {
 	}
 
 	public String[] createReceiptsArray(Data arr[], int count) {
-		// formats data from transaction array for use in receipts
+		// formats data from array for use in receipts
 		String[] receipts = new String[count];
 		for (int i = 0; i < count; i++)
 			receipts[i] = arr[i].convertToFormattedString();
@@ -324,7 +324,7 @@ public class ManageWarehouse {
 			readIntoPartArray(partsData);
 			System.out.println("Parts loaded from file.");
 		} catch (FileNotFoundException e) {
-			System.out.println("No part data found, file created.");
+			System.out.println("No part data found.");
 		}
 
 		try {
@@ -332,7 +332,7 @@ public class ManageWarehouse {
 			readIntoCustomerArray(custsData);
 			System.out.println("Customers loaded from file.");
 		} catch (FileNotFoundException e) {
-			System.out.println("No customer data found, file created.");
+			System.out.println("No customer data found.");
 		}
 
 		try {
@@ -340,7 +340,7 @@ public class ManageWarehouse {
 			readIntoTransactionArray(transData);
 			System.out.println("Transactions loaded from file.");
 		} catch (FileNotFoundException e) {
-			System.out.println("No transaction data found, file created.");
+			System.out.println("No transaction data found.");
 		}
 	}
 
@@ -371,53 +371,23 @@ public class ManageWarehouse {
 		int choice = validateIntInput("Please enter choice: ");
 
 		if (choice == 1)
-			viewPartData();
+			viewData(parts, partsCount);
 		else if (choice == 2)
-			viewCustomerData();
+			viewData(customers, custsCount);
 		else if (choice == 3)
-			viewTransactionData();
+			viewData(transactions, transCount);
 		else if (choice == 4)
 			searchTransactionDate();
 	}
 
-	public void viewPartData() {
+	public void viewData(Data arr[], int count) {
 		System.out.println("Enter part ID to view individual data OR enter * to view all part data");
 		String inputID = userInput.nextLine();
 		int foundCount = 0;
 
-		for (int i = 0; i < partsCount; i++) {
-			if (inputID.equals("*") || inputID.equals(parts[i].getID())) {
-				System.out.println(parts[i].convertToFormattedString());
-				foundCount++;
-			}
-		}
-		if (foundCount == 0)
-			System.out.println("No matching items found.");
-	}
-
-	public void viewCustomerData() {
-		System.out.println("Enter customer ID to view individual data OR enter * to view all customer data");
-		String inputID = userInput.nextLine();
-		int foundCount = 0;
-
-		for (int i = 0; i < custsCount; i++) {
-			if (inputID.equals("*") || inputID.equals(customers[i].getID())) {
-				System.out.println(customers[i].convertToFormattedString());
-				foundCount++;
-			}
-		}
-		if (foundCount == 0)
-			System.out.println("No matching items found.");
-	}
-
-	public void viewTransactionData() {
-		System.out.println("Enter transaction ID to view individual data OR enter * to view all transaction data");
-		String inputID = userInput.nextLine();
-		int foundCount = 0;
-
-		for (int i = 0; i < transCount; i++) {
-			if (inputID.equals("*") || inputID.equals(transactions[i].getID())) {
-				System.out.println(transactions[i].convertToFormattedString());
+		for (int i = 0; i < count; i++) {
+			if (inputID.equals("*") || inputID.equals(arr[i].getID())) {
+				System.out.println(arr[i].convertToFormattedString());
 				foundCount++;
 			}
 		}
