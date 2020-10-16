@@ -68,9 +68,9 @@ public class AssembledPart extends Part {
 	@Override
 	public String convertToFormattedString() {
 		// Creates user friendly string for reading data
-		return super.getID() + "\t" + super.getName() + "\tAssembled\tStock: " + super.getStockLevel() + "\tPrice: $"
-				+ getPrice() + "\tSub-parts: " + part1.getID() + " " + part1.getName() + " and " + part2.getID()
-				+ " " + part2.getName();
+		return super.getID() + "\t" + super.getName() + "\tAssembled\tStock: "
+				+ (super.getStockLevel() + getAvailForAssembly()) + "\tPrice: $" + getPrice() + "\tSub-parts: "
+				+ part1.getID() + " " + part1.getName() + " and " + part2.getID() + " " + part2.getName();
 	}
 
 }

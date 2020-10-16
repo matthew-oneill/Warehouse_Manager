@@ -87,7 +87,7 @@ public class ManageWarehouse {
 
 	public double validateDblInput(String msg) {
 		boolean error;
-		double value = 0; 
+		double value = 0;
 
 		do {
 			error = false;
@@ -159,27 +159,20 @@ public class ManageWarehouse {
 
 	public void supply() {
 		// TODO: handle for deciding no longer wanting to supply at id validate loop
-		boolean loop;
 
 		if (partsCount > 0)
 			if (custsCount > 0) {
 				int partIndex = getIndex("Enter part ID: ", parts, partsCount);
 				int custIndex = getIndex("Enter customer ID: ", customers, custsCount);
 
-				do {
-					loop = false;
-					try {
-						int qty = validateIntInput("Enter quantity to supply: ");
-						transactions[transCount] = new SupplyTransaction("Tr" + (transCount + 1), parts[partIndex],
-								customers[custIndex], qty);
-						transCount ++;
-					} catch (PartShortException e) {
-						System.out.printf(e.getMessage() + ". Current stock level is: " + e.getStockLevel()
-								+ "\nDo you wish to supply a different amount");
-						if ((userInput.nextLine()).charAt(0) == 'y' || (userInput.nextLine()).charAt(0) == 'Y')
-							loop = true;
-					}
-				} while (loop);
+				try {
+					int qty = validateIntInput("Enter quantity to supply: ");
+					transactions[transCount] = new SupplyTransaction("Tr" + (transCount + 1), parts[partIndex],
+							customers[custIndex], qty);
+					transCount++;
+				} catch (PartShortException e) {
+					System.out.printf(e.getMessage() + ". Current stock level is: " + e.getStockLevel());
+				}
 
 				// Handling for no data cases
 			} else
