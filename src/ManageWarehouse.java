@@ -133,6 +133,7 @@ public class ManageWarehouse {
 			int partIndex = getIndex("Enter part ID: ", parts, partsCount);
 			int qty = validateIntInput("Enter quantity to replenish: ");
 			transactions[transCount] = new ReplenishTransaction("Tr" + (transCount + 1), parts[partIndex], qty);
+			System.out.println(transactions[transCount].convertToFormattedString());
 			transCount++;
 		} else
 			System.out.println("No part data. Please add a part before attempting to replenish.");
@@ -169,6 +170,7 @@ public class ManageWarehouse {
 					int qty = validateIntInput("Enter quantity to supply: ");
 					transactions[transCount] = new SupplyTransaction("Tr" + (transCount + 1), parts[partIndex],
 							customers[custIndex], qty);
+					System.out.println(transactions[transCount].convertToFormattedString());
 					transCount++;
 				} catch (PartShortException e) {
 					System.out.printf(e.getMessage() + ". Current stock level is: " + e.getStockLevel());
