@@ -55,7 +55,7 @@ public class ManageWarehouse {
 			index = -1;
 			System.out.println("Enter ID: ");
 			iD = (userInput.nextLine()).toLowerCase();
-			for (int i = 0; i < partsCount; i++) {
+			for (int i = 0; i < count; i++) {
 				if (iD.equals(arr[i].getID()))
 					index = i;
 			}
@@ -172,6 +172,7 @@ public class ManageWarehouse {
 						int qty = validateIntInput("Enter quantity to supply: ");
 						transactions[transCount] = new SupplyTransaction("Tr" + (transCount + 1), parts[partIndex],
 								customers[custIndex], qty);
+						transCount ++;
 					} catch (PartShortException e) {
 						System.out.printf(e.getMessage() + ". Current stock level is: " + e.getStockLevel()
 								+ "\nDo you wish to supply a different amount");
