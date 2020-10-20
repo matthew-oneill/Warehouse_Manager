@@ -35,7 +35,7 @@ public class WholesaleCustomer extends Customer {
 	@Override
 	public String convertToFormattedString() {
 		// Creates user friendly string for reading data
-		return super.getID() + "\t" + super.getName() + "\tRetail\tLow Discount: " + discountRateLow
+		return super.getID() + "\t" + super.getName() + "\tWholesale\tLow Discount: " + discountRateLow
 				+ " High Discount: " + discountRateHigh;
 	}
 }

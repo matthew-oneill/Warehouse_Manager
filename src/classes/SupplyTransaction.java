@@ -44,7 +44,7 @@ public class SupplyTransaction extends Transaction {
 	public String convertToFormattedString() {
 		// Creates user friendly string for reading data
 		return super.getID() + "\t" + super.getFormattedDate() + "\tSupplied " + customer.getName() + " "
-				+ super.getQty() + " items of" + (super.getPart()).getName() + " (ID=" + (super.getPart()).getID()
+				+ super.getQty() + " items of " + (super.getPart()).getName() + " (ID=" + (super.getPart()).getID()
 				+ ") for $" + cost + " (discount $" + discount + ").";
 	}
 }

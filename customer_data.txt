@@ -1,1 +1,4 @@
 c101,Matt,0.1
+c102,Lucas,0.4
+c103,Bispha,0.25,0.5
+c104,Cattera,0.15,0.3

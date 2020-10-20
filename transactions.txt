@@ -1,5 +1,6 @@
 Tr1	16/10/2020	Replenished TestPart (ID=p101) with 5 new items.
-Tr2	16/10/2020	Supplied Matt 5 items ofTestPart (ID=p101) for $10.0 (discount $0.5).
-Tr3	16/10/2020	Supplied Matt 8 items ofTestPart (ID=p101) for $16.0 (discount $0.8).
+Tr2	16/10/2020	Supplied Matt 5 items of TestPart (ID=p101) for $10.0 (discount $0.5).
+Tr3	16/10/2020	Supplied Matt 8 items of TestPart (ID=p101) for $16.0 (discount $0.8).
 Tr4	16/10/2020	Replenished TestPart (ID=p101) with 10 new items.
 Tr5	16/10/2020	Replenished TestPart (ID=p101) with 0 new items.
+Tr6	21/10/2020	Supplied Matt 3 items of Crank-Shaft (ID=a101) for $75.0 (discount $0.30000000000000004).

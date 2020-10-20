@@ -244,8 +244,8 @@ public class ManageWarehouse {
 				parts[partsCount] = new Part(iD, name, stockLevel, price);
 			else if (tokenCount == 6) {
 				// uses partID String from input data to find part
-				Part part1 = parts[getIndex(attributes.nextToken(), parts)];
-				Part part2 = parts[getIndex(attributes.nextToken(), parts)];
+				Part part1 = parts[getIDIndex(attributes.nextToken(), parts, partsCount)];
+				Part part2 = parts[getIDIndex(attributes.nextToken(), parts, partsCount)];
 				parts[partsCount] = new AssembledPart(iD, name, stockLevel, price, part1, part2);
 			}
 
@@ -283,14 +283,14 @@ public class ManageWarehouse {
 			int tokenCount = attributes.countTokens();
 			String iD = attributes.nextToken();
 			String date = attributes.nextToken();
-			Part part = parts[getIndex(attributes.nextToken(), parts)];
+			Part part = parts[getIDIndex(attributes.nextToken(), parts, partsCount)];
 
 			// Handles for difference between Replenish and Supply transactions
 			if (tokenCount == 4) {
 				int qty = Integer.parseInt(attributes.nextToken());
 				transactions[transCount] = new ReplenishTransaction(iD, date, part, qty);
 			} else if (tokenCount == 6) {
-				Customer customer = customers[getIndex(attributes.nextToken(), customers)];
+				Customer customer = customers[getIDIndex(attributes.nextToken(), customers, custsCount)];
 				int qty = Integer.parseInt(attributes.nextToken());
 				double cost = Double.parseDouble(attributes.nextToken());
 				transactions[transCount] = new SupplyTransaction(iD, date, part, customer, qty, cost);
@@ -301,15 +301,15 @@ public class ManageWarehouse {
 		}
 	}
 
-	public int getIndex(String ID, Data arr[]) {
-		for (int i = 0; i < partsCount; i++) {
-			if (ID.equals(parts[i].getID())) {
+	public int getIDIndex(String ID, Data arr[], int count) {
+		for (int i = 0; i < count; i++) {
+			if (ID.equals(arr[i].getID())) {
 				return i;
 			}
 		}
 		return -1;
 	}
-
+	
 	public void initialise() {
 		// TODO refactor?
 		String partsData[], custsData[], transData[];
